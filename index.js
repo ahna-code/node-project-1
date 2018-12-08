@@ -1,5 +1,4 @@
-var os = require('os');
-var OSinfo = require('../modules/OSInfo');
+'use strict';
 
 process.stdin.setEncoding('utf-8');
 process.stdin.on('readable', function() {
@@ -10,13 +9,19 @@ process.stdin.on('readable', function() {
             case '/exit':
                 process.stdout.write('Quitting app!\n');
                 process.exit();
-                break;
+            break;
             case '/sayhello':
                 process.stdout.write('hello!\n');
-                break;
+            break;
+            case '/node-v':
+                  process.stdout.write(process.versions.node);
+            break;
+            case '/environ-lg':
+                  process.stdout.write(process.env.lang);
+            break;
+
             default:
                 process.stderr.write('Wrong instruction!\n');
         };
     }
 });
-
